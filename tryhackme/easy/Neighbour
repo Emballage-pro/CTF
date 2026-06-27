@@ -1,0 +1,9 @@
+Let's start this CTF by the classic way with a nmap scan :
+  nmap -sC -sV <IP>
+  
+  -sC is used for 
+
+  -sV is used for the versioning , in other word to see what is the version of protocol turning on the detected port 
+
+Let's see the resuslt of the scan :
+
