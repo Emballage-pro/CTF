@@ -10,7 +10,7 @@ When we try, a fake system popup appears preventing us to win.
 After checking the page source, we notice two interesting things:
 
 - a hidden banner meant to hold the flag
-- a client-side JavaScript module loaded at the bottom of the page:
+  
 
 ```html
 <script type="module" src="js/app.js"></script>
