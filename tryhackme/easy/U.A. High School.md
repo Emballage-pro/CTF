@@ -7,7 +7,7 @@ An easy Linux web box themed around *My Hero Academia*.
 I started with an `nmap` scan:
 
 ```bash  
-nmap -sC -sV &lt;IP&gt;  
+nmap -sC -sV <IP>
 ```
 
 Two ports open:
