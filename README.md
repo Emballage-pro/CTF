@@ -5,6 +5,7 @@ Writeups de challenges CTF réalisés sur TryHackMe et Root-Me, dans le cadre de
 ##  Objectif
 
 Ce repo documente ma progression technique sur des challenges d'intrusion, d'exploitation et de post-exploitation : reconnaissance, exploitation de vulnérabilités, élévation de privilèges.
+<!--
 ##  Index des writeups
 
 ### TryHackMe
@@ -19,7 +20,7 @@ Ce repo documente ma progression technique sur des challenges d'intrusion, d'exp
 | Challenge | Difficulté | Thème | Lien |
 |---|---|---|---|
 | _À venir_ | | | |
-
+-->
 ##  Méthodologie
 
 Chaque writeup suit la même structure :
