@@ -1,11 +1,11 @@
 # CTF Writeups
 
-Writeups de challenges CTF réalisés sur TryHackMe et Root-Me, dans le cadre de ma formation en cybersécurité (ESAIP Aix-en-Provence).
+Writeups de challenges CTF réalisés sur TryHackMe et Root-Me, dans le cadre de ma formation en cybersécurité.
 
-## 🎯 Objectif
+##  Objectif
 
 Ce repo documente ma progression technique sur des challenges d'intrusion, d'exploitation et de post-exploitation : reconnaissance, exploitation de vulnérabilités, élévation de privilèges.
-## 📚 Index des writeups
+##  Index des writeups
 
 ### TryHackMe
 
@@ -20,7 +20,7 @@ Ce repo documente ma progression technique sur des challenges d'intrusion, d'exp
 |---|---|---|---|
 | _À venir_ | | | |
 
-## 🛠️ Méthodologie
+##  Méthodologie
 
 Chaque writeup suit la même structure :
 1. **Résumé** — contexte et objectif du challenge
@@ -28,6 +28,6 @@ Chaque writeup suit la même structure :
 3. **Exploitation** — chaîne d'attaque détaillée
 4. **Privilege Escalation** — passage user → root/admin
 
-## ⚠️ Note
+##  Note
 
 Les flags et informations sensibles propres à chaque plateforme sont volontairement omis ou remplacés, conformément aux règles de publication de TryHackMe et Root-Me.
